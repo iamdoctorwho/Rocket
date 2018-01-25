@@ -182,6 +182,8 @@ dependencies {
     implementation 'com.adjust.sdk:adjust-android:4.11.4'
     implementation 'com.google.android.gms:play-services-analytics:'+ rootProject.firebaseVersion // Required by Adjust
     implementation 'com.google.firebase:firebase-core:'+ rootProject.firebaseVersion
+    implementation 'com.google.firebase:firebase-core:'+ rootProject.firebaseVersion
+    implementation 'com.google.firebase:firebase-config:'+ rootProject.firebaseVersion
 
     api 'com.airbnb.android:lottie:2.2.0'
 
