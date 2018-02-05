@@ -184,6 +184,9 @@ dependencies {
     implementation 'com.google.firebase:firebase-core:'+ rootProject.firebaseVersion
     implementation 'com.google.firebase:firebase-core:'+ rootProject.firebaseVersion
     implementation 'com.google.firebase:firebase-config:'+ rootProject.firebaseVersion
+    implementation 'com.google.firebase:firebase-core:'+ rootProject.firebaseVersion
+    implementation 'com.google.firebase:firebase-config:'+ rootProject.firebaseVersion
+    implementation 'com.google.firebase:firebase-messaging:'+ rootProject.firebaseVersion
 
     api 'com.airbnb.android:lottie:2.2.0'
 
