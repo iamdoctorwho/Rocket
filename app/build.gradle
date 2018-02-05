@@ -6,6 +6,7 @@ apply plugin: 'pmd'
 apply plugin: 'checkstyle'
 apply plugin: 'com.icesmith.androidtextresolver'
 apply plugin: 'com.google.gms.oss.licenses.plugin'
+apply plugin: 'io.fabric'
 
 buildscript {
     repositories {
@@ -182,11 +183,13 @@ dependencies {
     implementation 'com.adjust.sdk:adjust-android:4.11.4'
     implementation 'com.google.android.gms:play-services-analytics:'+ rootProject.firebaseVersion // Required by Adjust
     implementation 'com.google.firebase:firebase-core:'+ rootProject.firebaseVersion
-    implementation 'com.google.firebase:firebase-core:'+ rootProject.firebaseVersion
-    implementation 'com.google.firebase:firebase-config:'+ rootProject.firebaseVersion
-    implementation 'com.google.firebase:firebase-core:'+ rootProject.firebaseVersion
     implementation 'com.google.firebase:firebase-config:'+ rootProject.firebaseVersion
     implementation 'com.google.firebase:firebase-messaging:'+ rootProject.firebaseVersion
+    implementation 'com.google.firebase:firebase-crash:' + rootProject.firebaseVersion
+    implementation('com.crashlytics.sdk.android:crashlytics:' + rootProject.crashlyticsVersion + '@aar') {
+        transitive = true
+    }
+
 
     api 'com.airbnb.android:lottie:2.2.0'
 
