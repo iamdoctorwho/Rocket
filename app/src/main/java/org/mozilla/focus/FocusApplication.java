@@ -5,6 +5,7 @@
 
 package org.mozilla.focus;
 
+import android.os.Build;
 import android.os.StrictMode;
 import android.preference.PreferenceManager;
 
@@ -25,7 +26,10 @@ public class FocusApplication extends LocaleAwareApplication {
 
         PreferenceManager.setDefaultValues(this, R.xml.settings, false);
 
-        enableStrictMode();
+        // O_MR1(27,8.1.0) is still in preview, and have some trouble with Strict mode. see https://github.com/square/okhttp/issues/3537
+        if (Build.VERSION.SDK_INT != Build.VERSION_CODES.O_MR1) {
+            enableStrictMode();
+        }
 
         SearchEngineManager.getInstance().init(this);
 
