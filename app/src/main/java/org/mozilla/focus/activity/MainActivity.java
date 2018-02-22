@@ -297,7 +297,7 @@ public class MainActivity extends LocaleAwareAppCompatActivity implements Fragme
 
         safeForFragmentTransactions = false;
         TelemetryWrapper.stopSession();
-    
+
         PreferenceManager.getDefaultSharedPreferences(this)
                 .unregisterOnSharedPreferenceChangeListener(this);
     }
