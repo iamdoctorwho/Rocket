@@ -44,6 +44,14 @@ public class FirebaseHelper {
     }
 
     public static void init() {
+        new Thread(new Runnable() {
+            public void run() {
+                internalInit();
+            }
+        }).start();
+    }
+
+    private static void internalInit() {
 
         final FirebaseRemoteConfig config = FirebaseRemoteConfig.getInstance();
         REMOTE_CONFIG = new WeakReference<>(config);

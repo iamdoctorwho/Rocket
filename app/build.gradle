@@ -31,6 +31,7 @@ android {
         versionCode 1
         versionName "1.0.3"
         testInstrumentationRunner "org.mozilla.focus.test.runner.CustomTestRunner"
+        testInstrumentationRunnerArgument 'disableAnalytics','true'
         multiDexEnabled true
 
         def buddy_build_number = System.getenv("BUDDYBUILD_BUILD_NUMBER")
@@ -61,6 +62,7 @@ android {
             minifyEnabled true
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            resValue "bool", "enableCrashlytics", "true"
         }
         beta {
             initWith release
@@ -69,11 +71,13 @@ android {
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             matchingFallbacks = ["release"]
+            resValue "bool", "enableCrashlytics", "true"
         }
         debug {
             def userName = System.getenv("USER")
             applicationIdSuffix ".debug." + userName
             versionNameSuffix applicationIdSuffix
+            resValue "bool", "enableCrashlytics", "false"
         }
         // Use a separate buildType for coverage: testCoverageEnabled produces slower code (4-5x slower
         // in places that I've benchmarked), and more importantly seems to break debugging with Android Studio
@@ -84,6 +88,7 @@ android {
             applicationIdSuffix ".coverage"
             testCoverageEnabled true
             matchingFallbacks = ["debug"]
+            resValue "bool", "enableCrashlytics", "false"
         }
     }
 
@@ -185,7 +190,6 @@ dependencies {
     implementation 'com.google.firebase:firebase-core:'+ rootProject.firebaseVersion
     implementation 'com.google.firebase:firebase-config:'+ rootProject.firebaseVersion
     implementation 'com.google.firebase:firebase-messaging:'+ rootProject.firebaseVersion
-    implementation 'com.google.firebase:firebase-crash:' + rootProject.firebaseVersion
     implementation('com.crashlytics.sdk.android:crashlytics:' + rootProject.crashlyticsVersion + '@aar') {
         transitive = true
     }
