@@ -20,14 +20,12 @@ import java.lang.ref.WeakReference;
  */
 public class FirebaseHelper {
 
-    public static String RATE_APP_DIALOG_TEXT_TITLE = "rate_app_dialog_text_title";
-    public static String RATE_APP_DIALOG_TEXT_CONTENT = "rate_app_dialog_text_content";
+    public static final String RATE_APP_DIALOG_TEXT_TITLE = "rate_app_dialog_text_title";
+    public static final String RATE_APP_DIALOG_TEXT_CONTENT = "rate_app_dialog_text_content";
+    private static final String TAG = "FirebaseHelper";
 
     private static WeakReference<FirebaseRemoteConfig> REMOTE_CONFIG;
-
     private static long CACHE_EXPIRATION = 3600; // 1 hour in seconds.
-    private static String TAG = "FirebaseHelper";
-
 
     public static String getString(String s) {
         return REMOTE_CONFIG.get().getString(s);
