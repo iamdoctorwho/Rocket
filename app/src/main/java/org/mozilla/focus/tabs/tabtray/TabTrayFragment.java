@@ -77,7 +77,7 @@ public class TabTrayFragment extends DialogFragment implements TabTrayContract.V
         View view = inflater.inflate(R.layout.fragment_tab_tray, container, false);
         recyclerView = view.findViewById(R.id.tab_tray);
         newTabBtn = view.findViewById(R.id.new_tab_button);
-        background = view.findViewById(R.id.background);
+        background = view.findViewById(R.id.root_layout);
         logoMan = background.findViewById(R.id.logo_man);
         return view;
     }
@@ -270,7 +270,7 @@ public class TabTrayFragment extends DialogFragment implements TabTrayContract.V
 
             newTabBtn.setTranslationY(translationY);
             logoMan.setTranslationY(translationY);
-            background.setAlpha(backgroundAlpha);
+            background.setAlpha(backgroundAlpha < 0 ? 0 : backgroundAlpha);
         }
     };
 
