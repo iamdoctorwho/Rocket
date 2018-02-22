@@ -26,8 +26,11 @@ public class FocusApplication extends LocaleAwareApplication {
 
         PreferenceManager.setDefaultValues(this, R.xml.settings, false);
 
-        // O_MR1(27,8.1.0) is still in preview, and have some trouble with Strict mode. see https://github.com/square/okhttp/issues/3537
-        if (Build.VERSION.SDK_INT != Build.VERSION_CODES.O_MR1) {
+        // Android O has some trouble with Strict mode when setting VmPolicy detectAll().
+        // See https://github.com/square/okhttp/issues/3537
+        // TODO : Dig deeper about why onUntaggedSocket() is called and how to fix it when we want to support O. see:
+        // http://androidxref.com/8.0.0_r4/xref/frameworks/base/core/java/com/android/server/NetworkManagementSocketTagger.java#77
+        if (Build.VERSION.SDK_INT != Build.VERSION_CODES.O) {
             enableStrictMode();
         }
 

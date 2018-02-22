@@ -318,6 +318,9 @@ public class MainActivity extends LocaleAwareAppCompatActivity implements Fragme
             pendingUrl = intent.getDataString();
             // We don't want to see any menu is visible when processing open url request from Intent.ACTION_VIEW
             dismissAllMenus();
+        } else if (intent.getStringExtra(NotificationUtil.PUSH_OPEN_URL) != null) {
+            pendingUrl = intent.getStringExtra(NotificationUtil.PUSH_OPEN_URL);
+            dismissAllMenus();
         }
 
         // We do not care about the previous intent anymore. But let's remember this one.
